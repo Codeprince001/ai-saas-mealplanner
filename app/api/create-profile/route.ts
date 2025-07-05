@@ -1,26 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma  from '@/lib/prisma'; // Adjust the import path as necessary
+import { currentUser } from '@clerk/nextjs/server';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { userId, email } = body;
-
-    // Validate the input data
-    if (!userId || !email) {
-      return NextResponse.json({ error: 'User ID and email are required' }, { status: 400 });
+    const clerkUser = await currentUser()
+    if (!clerkUser) {
+      return NextResponse.json(
+        { error: 'Unauthorized User' },
+        { status: 401 }
+      );
     }
 
-    // Create a new profile in the database using Prisma
-    const profile = await prisma.profile.create({
+    const email = clerkUser.emailAddresses[0]?.emailAddress;
+    if (!email) {
+      return NextResponse.json(
+        { error: 'Email not found' },
+        { status: 400 }
+      );
+    }
+
+    const existingProfile = await prisma.profile.findUnique({
+      where: { userId: clerkUser.id },
+    });
+
+    if (existingProfile) {
+      return NextResponse.json(
+        { error: 'Profile already exists' },
+        { status: 400 }
+      );
+    }
+
+    const newProfile = await prisma.profile.create({
       data: {
-        userId,
-        email,
+        userId: clerkUser.id,
+        email: email,
+        subscriptionActive: false, // Default value
+        subscriptionTier: null, // Default value
+        stripeSubscriptionId: null, // Default value
       },
     });
 
-    // Return the created profile as a JSON response
-    return NextResponse.json(profile, { status: 201 });
+    return NextResponse.json(newProfile, { status: 201 });
+
+
   } catch (err) {
     return NextResponse.json(
       { error: 'Failed to create profile' },
