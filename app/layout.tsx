@@ -5,6 +5,8 @@ import Navbar from "@/components/navbar";
 import {
   ClerkProvider
 } from '@clerk/nextjs'
+import ReactQueryClientProvider from "@/components/react-query-client";
+import ReactToastProvider from "@/components/react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,16 +30,20 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
+      <ReactQueryClientProvider>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ReactToastProvider>
         <Navbar/>
         <main className="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8 pt-16 min-h-screen">
           {children}
         </main>
+        </ReactToastProvider>
       </body>
     </html>
+    </ReactQueryClientProvider>
     </ClerkProvider>
   );
 }
