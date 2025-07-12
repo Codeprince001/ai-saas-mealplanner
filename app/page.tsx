@@ -42,55 +42,55 @@ export default function Home() {
       </section>
 
       {/* Section 3: Testimonials */}
-  <section className="bg-gray-200 py-16 px-5">
-    <div className="container mx-auto text-center">
-      <h2 className="text-3xl font-bold mb-6">Testimonials</h2>
-      <p className="text-lg text-gray-700 mb-12">
-        Hear from our happy users who love their AI meal plans!
-      </p>
-
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
-        {testimonials.map((t, idx) => (
-          <div
-            key={idx}
-            className="relative bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center"
-          >
-            {/* avatar */}
-            <img
-              src={t.avatar}
-              alt={t.name}
-              className="w-20 h-20 rounded-full object-cover -mt-14 mb-4 ring-4 ring-gray-200"
-            />
-
-            {/* quote */}
-            <p className="text-gray-600 italic mb-6">
-              “{t.quote}”
+        <section className="bg-gray-200 py-16 px-5">
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Testimonials</h2>
+            <p className="text-lg text-gray-700 mb-12">
+              Hear from our happy users who love their AI meal plans!
             </p>
 
-            {/* name + title */}
-            <div className="text-center">
-              <h4 className="font-semibold">{t.name}</h4>
-              <span className="text-sm text-gray-500">
-                {t.title}
-              </span>
-            </div>
+            <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+              {testimonials.map((t, idx) => (
+                <div
+                  key={idx}
+                  className="relative bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center"
+                >
+                  {/* avatar */}
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="w-20 h-20 rounded-full object-cover -mt-14 mb-4 ring-4 ring-gray-200"
+                  />
 
-            {/* stars */}
-            <div className="flex gap-1 mt-4">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <FaStar
-                  key={i}
-                  className={`w-4 h-4 ${
-                    i < t.rating ? "text-yellow-400" : "text-gray-300"
-                  }`}
-                />
+                  {/* quote */}
+                  <p className="text-gray-600 italic mb-6">
+                    “{t.quote}”
+                  </p>
+
+                  {/* name + title */}
+                  <div className="text-center">
+                    <h4 className="font-semibold">{t.name}</h4>
+                    <span className="text-sm text-gray-500">
+                      {t.title}
+                    </span>
+                  </div>
+
+                  {/* stars */}
+                  <div className="flex gap-1 mt-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className={`w-4 h-4 ${
+                          i < t.rating ? "text-yellow-400" : "text-gray-300"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
+        </section>
 
         {/* Section 4: Contact */}
         <section className="py-16">
