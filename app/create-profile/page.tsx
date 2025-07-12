@@ -3,8 +3,9 @@
 import { useUser } from '@clerk/nextjs'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { toast } from 'react-toastify';
+import { Loader2 } from 'lucide-react'
 
 
 type ApiResponse = {
@@ -15,6 +16,8 @@ type ApiResponse = {
 const CreateProfile = () => {
   const router = useRouter()
   const {isSignedIn, isLoaded} = useUser()
+  const hasRunRef = useRef(false);
+
   const {mutate, isPending} = useMutation<ApiResponse, Error>({
     mutationFn: async () => {
       // Call your API to create a profile
@@ -42,14 +45,19 @@ const CreateProfile = () => {
   })
 
   useEffect(() => {
-    if (isLoaded && isSignedIn && !isPending){
+    if (isLoaded && isSignedIn && !isPending || hasRunRef.current){
+
+      
+  hasRunRef.current = true;
       mutate()
     }
   }, [isSignedIn, isLoaded])
 
   return (
-    <div>
-      Loading
+    <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4 bg-background">
+      <img src="/logo.svg" alt="Logo" className="h-12" />
+      <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <p className="text-sm text-muted-foreground">Just a moment while we set things up...</p>
     </div>
   )
 }
