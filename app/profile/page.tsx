@@ -58,7 +58,6 @@ const Profile = () => {
 
 
   const {
-    data: unsubscribeData,
     mutate: unsubscribeMutation,
     isPending: isUnsubscribePlanPending
   } = useMutation({

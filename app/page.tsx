@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { features, testimonials } from "../constant/features";
 import { FaStar } from "react-icons/fa";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -56,7 +57,7 @@ export default function Home() {
                   className="relative bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center"
                 >
                   {/* avatar */}
-                  <img
+                  <Image
                     src={t.avatar}
                     alt={t.name}
                     className="w-20 h-20 rounded-full object-cover -mt-14 mb-4 ring-4 ring-gray-200"
