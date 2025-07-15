@@ -24,3 +24,13 @@ model Profile {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model UserMealPlan {
+  id        String   @id @default(uuid())
+  userId    String   // your app's user id type
+  week      String   // e.g., "2025-W28"
+  mealPlan  Json     // store the whole meal plan JSON
+  createdAt DateTime @default(now())
+
+  @@unique([userId, week])  // ensure one meal plan per user per week
+}
