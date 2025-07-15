@@ -161,8 +161,7 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, subscription:
       }
     });
     console.log("Profile updated to inactive for user:", userId);
-  } catch (error) {
-    console.error("Failed to update profile:", error);
+  } catch (_error) {
     return NextResponse.json(
       { error: "Failed to update profile" },
       { status: 500 }
@@ -205,7 +204,6 @@ async function handleCustomerSubscriptionDeleted(subscription: Stripe.Subscripti
     });
 
   } catch (error) {
-    console.error("Failed to update profile:", error);
     return NextResponse.json(
       { error: error },
       { status: 500 }

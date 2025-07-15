@@ -111,7 +111,7 @@ export async function POST(request: NextRequest){
       )
     }
       return NextResponse.json({mealplan: parsedMealPlan})
-  } catch (error){
+  } catch (_error){
     return NextResponse.json({error: "Internal Server Error"}, {status: 500})
   }
 
