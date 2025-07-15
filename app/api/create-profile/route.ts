@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import prisma  from '@/lib/prisma'; // Adjust the import path as necessary
 import { currentUser } from '@clerk/nextjs/server';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const clerkUser = await currentUser()
     if (!clerkUser) {
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
   } catch (err) {
     return NextResponse.json(
-      { error: 'Failed to create profile' },
+      { error:err },
       { status: 500 }
     );
   }

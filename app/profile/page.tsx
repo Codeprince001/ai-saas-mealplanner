@@ -225,7 +225,7 @@ const Profile = () => {
           </h3>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            If you no longer wish to use the service, you can cancel your subscription. You'll retain access until the end of your billing cycle.
+            If you no longer wish to use the service, you can cancel your subscription. You&apos;ll retain access until the end of your billing cycle.
           </p>
 
           <button

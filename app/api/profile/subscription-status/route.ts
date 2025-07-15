@@ -23,6 +23,6 @@ export async function GET(){
 
       return NextResponse.json(profile)
   } catch(error){
-    return NextResponse.json({error: "Internal Server error"}, {status: 500})
+    return NextResponse.json({error: error}, {status: 500})
   }
 }

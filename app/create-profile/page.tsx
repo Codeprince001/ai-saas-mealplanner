@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useRef } from 'react'
 import { toast } from 'react-toastify';
 import { Loader2 } from 'lucide-react'
+import Image from 'next/image'
 
 
 type ApiResponse = {
@@ -55,7 +56,7 @@ const CreateProfile = () => {
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4 bg-background">
-      <img src="/logo.svg" alt="Logo" className="h-12" />
+      <Image src="/logo.svg" alt="Logo" width={48} height={48} />
       <Loader2 className="w-8 h-8 animate-spin text-primary" />
       <p className="text-sm text-muted-foreground">Just a moment while we set things up...</p>
     </div>

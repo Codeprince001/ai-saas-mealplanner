@@ -13,9 +13,12 @@ const eslintConfig = [
   {
     ignores: [
       "app/generated/**", // <-- Ignore your Prisma directory
+      // Optional: Ignore build output
+      ".next/**",
+      "node_modules/**",
     ],
   },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends("next/core-web-vitals", "next/typescript", "next"),
 ];
 
 export default eslintConfig;

@@ -9,7 +9,6 @@ let subscriptionObject: Stripe.Subscription | null = null;
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
-  console.log(body)
   const signature = request.headers.get("stripe-signature");
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -90,7 +89,7 @@ return NextResponse.json(
 
 }
 
-async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, metadata: any){
+async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, metadata: {clerkUserId?: string, planName?: string}){
   const userId = metadata.clerkUserId
   if(!userId){
     console.log("No user ID")
@@ -204,12 +203,11 @@ async function handleCustomerSubscriptionDeleted(subscription: Stripe.Subscripti
         subscriptionTier: null
       }
     });
-    console.log("Profile updated to inactive for user:", userId);
 
   } catch (error) {
     console.error("Failed to update profile:", error);
     return NextResponse.json(
-      { error: "Failed to update profile" },
+      { error: error },
       { status: 500 }
     );
   }

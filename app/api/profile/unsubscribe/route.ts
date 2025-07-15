@@ -1,11 +1,10 @@
-import { getPlanIDFromType } from "@/lib/plans";
 import prisma from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import { currentUser } from "@clerk/nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
 
 
-export async function POST(request: NextRequest){
+export async function POST(){
  
   try{
     const clerkUser = await currentUser()
@@ -48,6 +47,6 @@ export async function POST(request: NextRequest){
       return NextResponse.json({subscription: cancelSubscription})
 
   } catch(error){
-    return NextResponse.json({error: "Internal Server error"}, {status: 500})
+    return NextResponse.json({error: error}, {status: 500})
   }
 }

@@ -102,7 +102,7 @@ export async function POST(request: NextRequest){
         parsedMealPlan = JSON.parse(aiContent)
       }
       catch(error){
-        return NextResponse.json({message: "Failed to parse meal plan"}, {status: 500})
+        return NextResponse.json({message: error}, {status: 500})
       }
 
     if (typeof parsedMealPlan !== "object" || parsedMealPlan === null){
