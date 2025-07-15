@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "https://randomuser.me",
+        hostname: "randomuser.me",
         port: "",
         pathname: "/**",
       }

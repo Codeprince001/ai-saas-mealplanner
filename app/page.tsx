@@ -60,6 +60,8 @@ export default function Home() {
                   <Image
                     src={t.avatar}
                     alt={t.name}
+                    width={48}
+                    height={48}
                     className="w-20 h-20 rounded-full object-cover -mt-14 mb-4 ring-4 ring-gray-200"
                   />
 
