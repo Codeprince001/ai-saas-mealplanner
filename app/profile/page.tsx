@@ -6,7 +6,6 @@ import { useUser } from '@clerk/nextjs'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
 import UnsubscribeModal from '@/components/modal'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'

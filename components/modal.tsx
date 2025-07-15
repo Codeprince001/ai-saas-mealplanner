@@ -1,5 +1,4 @@
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
-import { useState } from "react";
 
 interface UnsubscribeModalProps {
   openModal: boolean;

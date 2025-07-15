@@ -1,7 +1,7 @@
 "use client";
 // This file is a client component because it uses hooks like useUser and useMutation
 
-import React, { use } from "react";
+import React from "react";
 import { availablePlans } from "@/lib/plans";
 import { useMutation } from "@tanstack/react-query";
 import { useUser } from "@clerk/nextjs";
