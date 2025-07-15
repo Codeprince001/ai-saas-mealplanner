@@ -113,7 +113,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session, 
   }
   catch (error) {
     return NextResponse.json(
-      { error: "Failed to update profile" },
+      { error: error },
       { status: 500 }
     );
   }
