@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "flowbite-react patch"
+    "postinstall": "prisma generate && flowbite-react patch"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.23.3",
