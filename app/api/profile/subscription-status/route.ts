@@ -16,7 +16,6 @@ export async function GET(){
       },
       select: {subscriptionTier: true}
     })
-    console.log("Profile", profile)
 
       if (!profile){
         return NextResponse.json({error: "No profile Found"})
