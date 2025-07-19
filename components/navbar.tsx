@@ -28,9 +28,6 @@ const Navbar = () => {
       <div className="flex items-center space-x-6">
       <SignedIn>
         <div className="flex items-center space-x-6">
-        <Link href="/dashboard" className="text-gray-800 hover:text-blue-500">
-          Dashboard
-        </Link>
         <Link href="/mealplan" className="text-gray-800 hover:text-blue-500">
           Meal Plan
         </Link>

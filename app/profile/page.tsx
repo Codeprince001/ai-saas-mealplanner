@@ -9,6 +9,7 @@ import React, { useState } from 'react'
 import UnsubscribeModal from '@/components/modal'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
+import Link from 'next/link'
 
 
 
@@ -29,7 +30,7 @@ const fetchSubscriptionStatus = async (): Promise<SubscriptionResponse> => {
 const Profile = () => {
   const [selectedPlan, setSelectedPlan] = useState<string>("")
   const { isLoaded, isSignedIn, user } = useUser()
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const queryClient = useQueryClient()
   const router = useRouter()
 
@@ -148,7 +149,7 @@ const Profile = () => {
           </h2>
 
           {isLoading ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mx-auto">
               <Spinner />
               <span className="text-gray-600 dark:text-gray-300">Loading subscription...</span>
             </div>
@@ -166,7 +167,14 @@ const Profile = () => {
                 <p className="text-green-600 font-medium">Status: ACTIVE ✅</p>
               </div>
             ) : (
+              <div>
               <p className="text-yellow-500">Current plan not found in plan list.</p>
+              <Link href={isSignedIn ? "/subscribe" : "/sign-up"} className="text-gray-800 hover:text-blue-500">
+              <button className='px-6 mt-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer'>
+                Choose Subscription plan
+              </button>
+              </Link>
+            </div>
             )
           ) : (
             <p className="text-gray-500">No subscription data available.</p>

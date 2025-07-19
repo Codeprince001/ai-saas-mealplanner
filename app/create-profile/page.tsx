@@ -7,6 +7,7 @@ import React, { useEffect, useRef } from 'react'
 import { toast } from 'react-toastify';
 import { Loader2 } from 'lucide-react'
 import Image from 'next/image'
+import Logo from "@/public/logo.png"
 
 
 type ApiResponse = {
@@ -55,9 +56,9 @@ const CreateProfile = () => {
   }, [isSignedIn, isLoaded])
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4 bg-background">
-      <Image src="/logo.svg" alt="Logo" width={48} height={48} />
-      <Loader2 className="w-8 h-8 animate-spin text-primary" />
+    <div className="flex flex-col items-center justify-center space-y-4 bg-background">
+      <Loader2 className="w-12 h-12 animate-spin text-primary"/>
+      <Image src={Logo} alt="Logo" width={54} height={54} />
       <p className="text-sm text-muted-foreground">Just a moment while we set things up...</p>
     </div>
   )
