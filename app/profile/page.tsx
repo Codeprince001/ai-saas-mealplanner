@@ -140,7 +140,7 @@ const Profile = () => {
               {user.primaryEmailAddress?.emailAddress}
             </p>
             <p className='text-gray-600 dark:text-gray-300 mt-1'>
-              Dummy Paster Card: 5555 5555 5555 4444
+              Dummy Master Card: 5555 5555 5555 4444
             </p>
             <p className='text-gray-600 dark:text-gray-300 mt-1'>Use any CVV or Expiring Date</p>
           </div>
